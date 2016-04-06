@@ -4,9 +4,9 @@ def checkio(data):
         return False
     else:
         for char in data:
-            number = char.isnumeric() or False
-            upper = char.isupper() or False
-            lower = char.lower() or False
+            number = number or char.isnumeric()
+            upper = upper or char.isupper()
+            lower = lower or char.lower()
 
         return number and upper and lower
 
