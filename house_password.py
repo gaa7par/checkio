@@ -8,11 +8,7 @@ def checkio(data):
     else:
         data = data[::1]
         for char in data:
-            if char.isnumeric():
-                numeric = True
-            if char.isupper():
-                upper = True
-            if char.islower():
-                lower = True
-    if numeric and upper and lower:
-        return True
+            numeric = numeric or char.isnumeric()
+            upper = upper or char.isupper()
+            lower = lower or char.islower()
+    return numeric and upper and lower
