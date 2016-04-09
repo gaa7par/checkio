@@ -1,17 +1,23 @@
 def checkio(data):
-    number, upper, lower = False
+    numeric = False
+    upper = False
+    lower = False
+
     if len(data) < 10:
         return False
     else:
+        data = data[::1]
         for char in data:
-            number = number or char.isnumeric()
-            upper = upper or char.isupper()
-            lower = lower or char.lower()
-
-        return number and upper and lower
+            if char.isnumeric():
+                numeric = True
+            if char.isupper():
+                upper = True
+            if char.islower():
+                lower = True
+    if numeric and upper and lower:
+        return True
 
 if __name__ == '__main__':
-    # These "asserts" using only for self-checking and not necessary for auto-testing
     assert checkio('A1213pokl') == False, "1st example"
     assert checkio('bAse730onE4') == True, "2nd example"
     assert checkio('asasasasasasasaas') == False, "3rd example"
